@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper映射文件-->
+<mapper namespace="com.mybatis_04.mapper.RoleMapper">
+    <insert id="insertRole" parameterType="role">
+        insert into tb_role(id,name,role) values(#{id},#{name},#{roleName});
+    </insert>
+
+    <delete id="deleteRole" parameterType="int">
+        delete from tb_role where id = #{id};
+    </delete>
+
+    <update id="updateRole" parameterType="role">
+        update tb_role set name = #{name},role = #{roleName} where id = #{id};
+    </update>
+
+    <select id="getRole" parameterType="int" resultType="role">
+        select id,name,role as roleName from tb_role where id = #{id};
+    </select>
+
+    <select id="findRole" parameterType="String" resultType="role">
+        select id,name,role as roleName from tb_role where role like concat('%',#{roleName});
+    </select>
+</mapper>
